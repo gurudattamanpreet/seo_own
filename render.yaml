@@ -2,11 +2,11 @@ services:
   - type: web
     name: seometrics-professional
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
     startCommand: uvicorn seometrics_comprehensive:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.0
+        value: 3.11.6
       - key: GROQ_API_KEY
         sync: false
       - key: PAGESPEED_API_KEY
