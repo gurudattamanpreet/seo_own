@@ -661,7 +661,7 @@ class PerformanceAnalyzer:
             load_time = (time.time() - start_time) * 1000
             
             # Parse HTML
-            soup = BeautifulSoup(response.text, 'html.parser')
+            soup = BeautifulSoup(response.text, 'html5lib')
             
             # Count resources
             scripts = len(soup.find_all('script'))
@@ -935,8 +935,8 @@ class SEOAnalyzer:
             results["response_headers"] = dict(response.headers)
             self._check_http_status(response.status_code)
             
-            # Parse HTML
-            soup = BeautifulSoup(html_content, 'html.parser')
+            # Parse HTML with html5lib (no lxml needed)
+            soup = BeautifulSoup(html_content, 'html5lib')
             
             # Basic checks
             await self._check_meta_tags(soup)
